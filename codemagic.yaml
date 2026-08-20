@@ -3,15 +3,11 @@ workflows:
     name: Build Android APK
     instance_type: mac_mini_m1
     environment:
-  vars:
-    UNITY_VERSION: 2022.3.22f1
+      vars:
+        UNITY_VERSION: 2022.3.22f1
     scripts:
-      - name: Set Unity Version
-        script: |
-          #!/bin/bash
-          echo "Using Unity 2022.3.22f1"
       - name: Build Unity Android
         script: |
-          unity-builder build-android -v 2022.3.22f1
+          unity-builder build-android -v $UNITY_VERSION
     artifacts:
       - build/*.apk
