@@ -1,0 +1,13 @@
+workflows:
+  android-unity:
+    name: Build Android APK
+    instance_type: mac_mini_m1
+    environment:
+      unity: 2022.3.22f1
+      android_sdk_tools: latest
+    scripts:
+      - name: Build Unity Android
+        script: |
+          unity-builder build-android
+    artifacts:
+      - build/*.apk
