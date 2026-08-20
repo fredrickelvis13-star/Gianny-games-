@@ -3,7 +3,8 @@ workflows:
     name: Build Android APK
     instance_type: mac_mini_m1
     environment:
-      android_sdk_tools: latest
+  vars:
+    UNITY_VERSION: 2022.3.22f1
     scripts:
       - name: Set Unity Version
         script: |
