@@ -1,13 +1,18 @@
 workflows:
   android-unity:
     name: Build Android APK
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
+    max_build_duration: 60
     environment:
-      vars:
-        UNITY_VERSION: 2022.3.22f1
+      unity: 2022.3.22f1
     scripts:
-      - name: Build Unity Android
+      - name: Build Android
         script: |
-          unity-builder build-android -v $UNITY_VERSION
+          /Applications/Unity/Hub/Editor/$UNITY_VERSION/Unity \
+          -batchmode \
+          -quit \
+          -projectPath $CM_BUILD_DIR \
+          -executeMethod BuildScript.BuildAndroid \
+          -logFile -
     artifacts:
       - build/*.apk
